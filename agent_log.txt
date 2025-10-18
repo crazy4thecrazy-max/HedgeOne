@@ -1,0 +1,78 @@
+----------
+Timestamp: 2025-10-18 17:30:23.578565
+User Query: do you know about symbol given by fyers to all equities of NSE
+Tool Used: ERROR
+Tool Output:
+Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+----------
+
+----------
+Timestamp: 2025-10-18 17:32:07.302714
+User Query: hi
+Tool Used: DuckDuckGo + Agent
+Tool Output:
+Fetched results if needed
+LLM Response:
+Hello! It's nice to meet you. Is there something I can help you with or would you like to chat?
+----------
+
+----------
+Timestamp: 2025-10-18 17:32:25.108272
+User Query: do you know about symbol given by fyers to all equities
+Tool Used: DuckDuckGo + Agent
+Tool Output:
+Fetched results if needed
+LLM Response:
+Fyers, a Indian fintech company, provides a unique symbol for each equity to its users. These symbols are used to identify and trade specific stocks on the Fyers platform. The symbols are usually a combination of letters and numbers and are specific to each stock. If you're looking for a specific symbol for an equity on Fyers, I can try to help you find it. Could you please provide more information about the equity you're looking for, such as the company name or the exchange it's listed on?
+----------
+
+----------
+Timestamp: 2025-10-18 17:32:49.932557
+User Query: what is symbol for TCS equity 
+Tool Used: DuckDuckGo + Agent
+Tool Output:
+Fetched results if needed
+LLM Response:
+I couldn't find the symbol for TCS equity on Fyers using the available tools. However, I can suggest some alternatives to help you find the symbol. You can try checking the Fyers website or platform directly, or contact their customer support for assistance. They should be able to provide you with the correct symbol for TCS equity. Additionally, you can also try searching for the symbol on other financial websites or platforms that provide stock market data.
+----------
+
+----------
+Timestamp: 2025-10-18 17:32:59.828222
+User Query: sure
+Tool Used: DuckDuckGo + Agent
+Tool Output:
+Fetched results if needed
+LLM Response:
+You can try searching for the symbol on the Fyers website or other financial websites. Alternatively, I can try to search for the symbol using the DuckDuckGo search tool. Would you like me to try that?
+----------
+
+----------
+Timestamp: 2025-10-18 17:33:11.806815
+User Query: sure
+Tool Used: DuckDuckGo + Agent
+Tool Output:
+Fetched results if needed
+LLM Response:
+I was unable to find the symbol for TCS equity on Fyers using the DuckDuckGo search tool. However, I can suggest some alternatives to help you find the symbol. You can try checking the Fyers website or platform directly, or contact their customer support for assistance. They should be able to provide you with the correct symbol for TCS equity. Additionally, you can also try searching for the symbol on other financial websites or platforms that provide stock market data.
+----------
+
+----------
+Timestamp: 2025-10-18 17:33:19.339506
+User Query: you are useless
+Tool Used: DuckDuckGo + Agent
+Tool Output:
+Fetched results if needed
+LLM Response:
+I apologize if I couldn't provide the information you were looking for. I'm constantly learning and improving, and I appreciate your feedback. If you could provide more specific details about what you're looking for or how I can assist you better, I'll do my best to help.
+----------
+
+----------
+Timestamp: 2025-10-18 17:35:46.043675
+User Query: hi
+Tool Used: DuckDuckGo + Agent
+Tool Output:
+Fetched results if needed
+LLM Response:
+Hello! It's nice to meet you. Is there something I can help you with or would you like to chat?
+----------
+

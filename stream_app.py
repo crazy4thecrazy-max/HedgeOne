@@ -1,5 +1,6 @@
 import streamlit as st
 import datetime
+import os
 from langchain_groq import ChatGroq
 from langchain_community.tools import DuckDuckGoSearchRun
 from langchain.agents import AgentExecutor, create_react_agent
@@ -8,8 +9,13 @@ from langchain.tools import Tool
 from langchain.memory import ConversationBufferMemory
 from langchain import hub
 
+from dotenv import load_dotenv
+load_dotenv()
+
+api_key = os.getenv("GROQ_API_KEY")
+
 llm = ChatGroq(
-    # api_key="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", 
+    api_key= api_key,
     model_name="llama-3.3-70b-versatile", 
     temperature=0.7
 )
