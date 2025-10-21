@@ -7,7 +7,7 @@ SECRET_KEY = "DST9UGHTX7"
 GRANT_TYPE = "authorization_code"       # always has to be authorization code
 RESPONSE_TYPE = "code"                  # always has to be code
 STATE = "sample"
-AUTH_CODE = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiJDVjI2SExPOUpJIiwidXVpZCI6IjU1NDUyNDI5MGQ4NTRlOWVhMTlmNzU4ZGRlYjdmNTQ4IiwiaXBBZGRyIjoiIiwibm9uY2UiOiIiLCJzY29wZSI6IiIsImRpc3BsYXlfbmFtZSI6IkZBQzYyMzQ0Iiwib21zIjoiSzEiLCJoc21fa2V5IjoiMGEwZjM4NTM0MDdjNTZjMGI3NTg1NTY2M2ZhNzNjODc0ZWNiMmE0YzI1NmRkOTM5NGFlY2RkMDUiLCJpc0RkcGlFbmFibGVkIjoiTiIsImlzTXRmRW5hYmxlZCI6Ik4iLCJhdWQiOiJbXCJkOjFcIixcImQ6MlwiLFwieDowXCIsXCJ4OjFcIixcIng6MlwiXSIsImV4cCI6MTc2MDkyMzgzMCwiaWF0IjoxNzYwODkzODMwLCJpc3MiOiJhcGkubG9naW4uZnllcnMuaW4iLCJuYmYiOjE3NjA4OTM4MzAsInN1YiI6ImF1dGhfY29kZSJ9.UcduYTLnFBjPaIHK8d9woYRKVK6ABsLQh_0ye5LgcEQ"
+AUTH_CODE = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiJDVjI2SExPOUpJIiwidXVpZCI6IjEyM2RjN2MxNDI4ZTQwYjJiNTJhZTcyNmEyZDhlMDNiIiwiaXBBZGRyIjoiIiwibm9uY2UiOiIiLCJzY29wZSI6IiIsImRpc3BsYXlfbmFtZSI6IkZBQzYyMzQ0Iiwib21zIjoiSzEiLCJoc21fa2V5IjoiMGJjOGNjNmIwYThhMzk4ZDRjNGNiMjZkY2UyN2M5MWU3OTk1NmVkMDZhMjVkZmViYWIzMmNjNDgiLCJpc0RkcGlFbmFibGVkIjoiTiIsImlzTXRmRW5hYmxlZCI6Ik4iLCJhdWQiOiJbXCJkOjFcIixcImQ6MlwiLFwieDowXCIsXCJ4OjFcIixcIng6MlwiXSIsImV4cCI6MTc2MTA5MTY2NywiaWF0IjoxNzYxMDYxNjY3LCJpc3MiOiJhcGkubG9naW4uZnllcnMuaW4iLCJuYmYiOjE3NjEwNjE2NjcsInN1YiI6ImF1dGhfY29kZSJ9.RKrkSaCBsRDQd7rxT3yutypvtgVeTxHH2bTNoZIal6c"
 def get_logger(module):
     return lambda *args, **kwargs: print(f"[{datetime.datetime.now().strftime('%Y:%m:%d %H:%M:%S.%f')}] | {module} |", flush=True, *args, **kwargs)
 
