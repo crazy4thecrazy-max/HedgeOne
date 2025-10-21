@@ -25,16 +25,36 @@ def create_vector_store_if_missing(csv_path: str, index_path: str, embeddings_mo
         
     try:
         df = pd.read_csv(csv_path)
-        if 'Company name' not in df.columns or 'Symbol' not in df.columns:
-            print(f"Error: CSV '{csv_path}' must contain 'Company name' and 'Symbol' columns.")
+        documents = []
+
+        # --- THIS IS THE UPDATED LOGIC ---
+        if csv_path == FNO_CSV_FILE:
+            # For F&O file, we expect 'Company name', 'Symbol', and 'Lot size'
+            if 'Company name' not in df.columns or 'Symbol' not in df.columns or 'Lot size' not in df.columns:
+                print(f"Error: F&O CSV '{csv_path}' must contain 'Company name', 'Symbol', and 'Lot size' columns.")
+                sys.stdout.flush()
+                exit()
+                
+            documents = [
+                Document(page_content=f"{row['Company name']},{row['Symbol']},{row['Lot size']}")
+                for _, row in df.iterrows()
+            ]
+            print(f"Loaded F&O data with Lot Size.")
             sys.stdout.flush()
-            exit()
             
-        documents = [
-            Document(page_content=f"{row['Company name']},{row['Symbol']}")
-            for _, row in df.iterrows()
-        ]
-        
+        else:
+            # For all other files (like equity), just use 'Company name' and 'Symbol'
+            if 'Company name' not in df.columns or 'Symbol' not in df.columns:
+                print(f"Error: CSV '{csv_path}' must contain 'Company name' and 'Symbol' columns.")
+                sys.stdout.flush()
+                exit()
+                
+            documents = [
+                Document(page_content=f"{row['Company name']},{row['Symbol']}")
+                for _, row in df.iterrows()
+            ]
+        # --- END OF UPDATED LOGIC ---
+
         if not documents:
             print(f"Error: No documents created from '{csv_path}'. Is the file empty?")
             sys.stdout.flush()

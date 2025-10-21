@@ -30,14 +30,18 @@ def search_for_equity_symbol(company_query: str, top_k: int = 3) -> list[str]:
         sys.stdout.flush()
         return [f"Error during equity search: {e}"]
 
+# ... (imports and other tools are unchanged) ...
+
 @tool
 def search_for_fno_symbol(derivative_query: str, top_k: int = 3) -> list[str]:
     """
-    Searches the F&O (Futures & Options) vector database for the top_k (default 3)
-    most similar derivative contracts, like futures.
+    Searches the F&O (Futures & Options) vector database for F&O-enabled
+    equities.
     Returns a list of raw strings, where each string contains the
-    'Contract Name,Symbol' (e.g., "TCS 28OCT2025 FUT,NSE:TCS25OCTFUT").
-    This tool should be used to find specific FUTURES contracts.
+    'Company Name,Equity Symbol,Lot Size' 
+    (e.g., "ADANI ENTERPRISES,NSE:ADANIENT-EQ,300").
+    This tool should be used to find the UNDERLYING EQUITY symbol for
+    derivatives (Options/Futures) AND to find its lot size.
     """
     print(f"[Tool Call] search_for_fno_symbol: Searching for '{derivative_query}', k={top_k}")
     sys.stdout.flush()

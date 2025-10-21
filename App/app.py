@@ -1,5 +1,6 @@
 import streamlit as st
 import io
+import re  # <-- ADD THIS IMPORT
 from contextlib import redirect_stdout
 from langchain_community.chat_message_histories import SQLChatMessageHistory
 
@@ -12,8 +13,13 @@ from agent import get_agent_executor
 st.set_page_config(layout="wide", page_title="Hedge One AI Assistant")
 
 # --- Database Initialization ---
-# This runs once at the start of the app
 init_db()
+
+# --- NEW: Helper function to clean ANSI codes ---
+def clean_ansi_codes(text: str) -> str:
+    """Removes ANSI escape codes (for colors/styling) from text."""
+    ansi_escape = re.compile(r'\x1b\[[0-9;]*m')
+    return ansi_escape.sub('', text)
 
 # --- Helper function to load chat history for display ---
 def load_chat_history(session_id):
@@ -67,24 +73,19 @@ with st.sidebar:
         for session_id, thread_name in threads.items():
             if st.button(thread_name, key=session_id, use_container_width=True):
                 st.session_state.session_id = session_id
-                # Load history for display
                 st.session_state.messages = load_chat_history(session_id)
                 st.rerun()
 
 # --- Main Chat Interface ---
 st.title("AI Financial Assistant")
 
-# Check if a chat is selected
 if "session_id" not in st.session_state:
     st.info("Start a new chat or select an existing one from the sidebar to begin.")
     st.stop()
 
-# A session is active
 session_id = st.session_state.session_id
 user_profile = st.session_state.user_profile
 
-# Get the session-specific agent
-# We cache this to avoid re-creating it on every single widget interaction
 @st.cache_resource(ttl=3600)
 def get_cached_agent(session_id, user_profile):
     return get_agent_executor(session_id, user_profile)
@@ -95,27 +96,20 @@ except Exception as e:
     st.error(f"Error loading agent. Your API keys may be invalid. Error: {e}")
     st.stop()
 
-
-# Initialize or load messages for display
 if "messages" not in st.session_state:
     st.session_state.messages = load_chat_history(session_id)
 
-# Display chat messages
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# Chat input
 if prompt := st.chat_input("Ask about stocks, futures, or options..."):
-    # Add user message to display
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    # Get assistant response
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            # Capture verbose output from the agent
             f = io.StringIO()
             with redirect_stdout(f):
                 try:
@@ -124,14 +118,13 @@ if prompt := st.chat_input("Ask about stocks, futures, or options..."):
                 except Exception as e:
                     output = f"An error occurred: {e}"
             
-            agent_steps = f.getvalue() # Get the captured stdout
+            # --- THIS IS THE UPDATE ---
+            raw_agent_steps = f.getvalue()
+            cleaned_agent_steps = clean_ansi_codes(raw_agent_steps) # Clean the output
             
-            # Display the final output
             st.markdown(output)
             
-            # Add agent steps to an expander
             with st.expander("See agent's thought process"):
-                st.code(agent_steps)
-
-    # Add assistant response to session state
+                st.code(cleaned_agent_steps) # Display the cleaned output
+                
     st.session_state.messages.append({"role": "assistant", "content": output})
