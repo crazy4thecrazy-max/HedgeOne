@@ -27,7 +27,7 @@ FNO_FAISS_INDEX = "fno_faiss_index"
 EMBEDDINGS_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 
 # --- LLM Configuration ---
-LLM_MODEL = "openai/gpt-oss-120b" # Note: Your original code had 'openai/gpt-oss-120b' and 'llama3-70b-8192' in comments. Using Llama 3 70b as it's a strong model.
+LLM_MODEL = "openai/gpt-oss-20b" # Note: Your original code had 'openai/gpt-oss-120b' and 'llama3-70b-8192' in comments. Using Llama 3 70b as it's a strong model.
 LLM_TEMPERATURE = 0.1
 
 # --- Default User Profile (will be editable in Streamlit) ---
