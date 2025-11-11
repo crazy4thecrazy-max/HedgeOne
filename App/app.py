@@ -86,7 +86,7 @@ if "session_id" not in st.session_state:
 session_id = st.session_state.session_id
 user_profile = st.session_state.user_profile
 
-@st.cache_resource(ttl=3600)
+# @st.cache_resource(ttl=10)
 def get_cached_agent(session_id, user_profile):
     return get_agent_executor(session_id, user_profile)
 
